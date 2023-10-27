@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <title>Tugas Form Validasi</title>
+    <script>
+    function validateForm() {
+        var name = document.forms["myForm"]["nama"].value;
+        var email = document.forms["myForm"]["email"].value;
+
+        if (name == "") {
+            alert("Nama harus diisi");
+            return false;
+        }
+
+        if (email == "") {
+            alert("Email harus diisi");
+            return false;
+        }
+
+        // Mengecek apakah email memiliki format yang benar
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if (!email.match(emailPattern)) {
+            alert("Email tidak valid !");
+            return false;
+        }
+    }   
+    </script>
+</head>
+<body>
+    <h2>Formulir Validasi</h2>
+    <div class="container">
+        <form name="myForm" onsubmit="return validateForm()" method="post">
+        <div class="form-group">
+            <label for="nama">Nama:</label>
+            <input type="text" name="nama" id="nama">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" name="email" id="email">
+        </div>
+
+        <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
